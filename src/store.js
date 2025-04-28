@@ -4,6 +4,7 @@ import cartReducer from "./cartSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; 
 import { combineReducers } from "@reduxjs/toolkit";
+import darkModeReducer from "./darkModeSlice";
 
 const persistConfig = {
     key: "root",
@@ -14,6 +15,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
     items: itemReducer,
     cart: cartReducer,
+    darkMode : darkModeReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

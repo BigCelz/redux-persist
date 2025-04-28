@@ -17,6 +17,7 @@ const Item = () => {
         Loading...
       </div>
     );
+
   if (status === "failed")
     return (
       <div className="text-center text-lg text-red-500 mt-20 font-semibold">
@@ -25,26 +26,28 @@ const Item = () => {
     );
 
   return (
-    <div className="mt-20 px-4 py-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div className="pt-20 px-4 py-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 dark:bg-gray-700 dark:text-white">
       {items.map((item) => (
         <div
           key={item.id}
-          className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300"
+          className="bg-white dark:bg-gray-800 dark:text-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition duration-300"
         >
           <img
             src={item.image}
             alt={item.title}
-            className="h-48 w-full object-contain p-4 bg-gray-100"
+            className="h-48 w-full object-contain p-4 "
           />
           <div className="p-4">
-            <h2 className="text-lg font-semibold text-gray-800">
+            <h2 className="text-lg font-semibold dark:text-white text-gray-800">
               {item.title.length > 40
                 ? item.title.slice(0, 40) + "..."
                 : item.title}
             </h2>
+            <p className="text-gray-600 dark:text-gray-400"> ${item.price} </p>
             <div className=" mt-3">
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition"
-               onClick={()=> dispatch(addItemToCart(item))}
+              <button
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition"
+                onClick={() => dispatch(addItemToCart(item))}
               >
                 Add Item
               </button>
